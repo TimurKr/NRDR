@@ -1,0 +1,201 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: w_5
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug/
+# =============================================================================
+# Object build statements for EXECUTABLE target uloha1
+
+
+#############################################
+# Order-only phony target for uloha1
+
+build cmake_object_order_depends_target_uloha1: phony || CMakeFiles/uloha1.dir
+
+build CMakeFiles/uloha1.dir/uloha1.c.o: C_COMPILER__uloha1_Debug /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/uloha1.c || cmake_object_order_depends_target_uloha1
+  DEP_FILE = CMakeFiles/uloha1.dir/uloha1.c.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics -std=gnu11
+  OBJECT_DIR = CMakeFiles/uloha1.dir
+  OBJECT_FILE_DIR = CMakeFiles/uloha1.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target uloha1
+
+
+#############################################
+# Link the executable uloha1
+
+build uloha1: C_EXECUTABLE_LINKER__uloha1_Debug CMakeFiles/uloha1.dir/uloha1.c.o
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2
+  OBJECT_DIR = CMakeFiles/uloha1.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = uloha1
+  TARGET_PDB = uloha1.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target uloha2
+
+
+#############################################
+# Order-only phony target for uloha2
+
+build cmake_object_order_depends_target_uloha2: phony || CMakeFiles/uloha2.dir
+
+build CMakeFiles/uloha2.dir/uloha2.c.o: C_COMPILER__uloha2_Debug /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/uloha2.c || cmake_object_order_depends_target_uloha2
+  DEP_FILE = CMakeFiles/uloha2.dir/uloha2.c.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics -std=gnu11
+  OBJECT_DIR = CMakeFiles/uloha2.dir
+  OBJECT_FILE_DIR = CMakeFiles/uloha2.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target uloha2
+
+
+#############################################
+# Link the executable uloha2
+
+build uloha2: C_EXECUTABLE_LINKER__uloha2_Debug CMakeFiles/uloha2.dir/uloha2.c.o
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2
+  OBJECT_DIR = CMakeFiles/uloha2.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = uloha2
+  TARGET_PDB = uloha2.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target uloha3
+
+
+#############################################
+# Order-only phony target for uloha3
+
+build cmake_object_order_depends_target_uloha3: phony || CMakeFiles/uloha3.dir
+
+build CMakeFiles/uloha3.dir/uloha3.c.o: C_COMPILER__uloha3_Debug /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/uloha3.c || cmake_object_order_depends_target_uloha3
+  DEP_FILE = CMakeFiles/uloha3.dir/uloha3.c.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics -std=gnu11
+  OBJECT_DIR = CMakeFiles/uloha3.dir
+  OBJECT_FILE_DIR = CMakeFiles/uloha3.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target uloha3
+
+
+#############################################
+# Link the executable uloha3
+
+build uloha3: C_EXECUTABLE_LINKER__uloha3_Debug CMakeFiles/uloha3.dir/uloha3.c.o
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2
+  OBJECT_DIR = CMakeFiles/uloha3.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = uloha3
+  TARGET_PDB = uloha3.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug && "/Users/timurkramar/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug && "/Users/timurkramar/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/bin/cmake" --regenerate-during-build -S/Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5 -B/Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug
+
+build all: phony uloha1 uloha2 uloha3
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Users/timurkramar/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
