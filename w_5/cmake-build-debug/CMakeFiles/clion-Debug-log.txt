@@ -1,4 +1,0 @@
-"/Users/timurkramar/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/Users/timurkramar/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/ninja/mac/ninja" -G Ninja -S /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5 -B /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug

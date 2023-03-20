@@ -1,5 +1,0 @@
-/Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug/CMakeFiles/uloha1.dir
-/Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug/CMakeFiles/uloha2.dir
-/Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug/CMakeFiles/uloha3.dir
-/Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/timurkramar/Library/CloudStorage/OneDrive-Personal/MPM/NRDR/w_5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
