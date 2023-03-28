@@ -14,5 +14,9 @@ double f(double x) {
 }
 
 double df(double x) {
-    return -32 * sin(x) * cos(x);
+    return -16 * sin(2*x);
+}
+
+double ddf(double x) {
+    return -32 * (2*x);
 }
