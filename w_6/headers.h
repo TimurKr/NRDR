@@ -26,6 +26,29 @@ double d_f2(double x) {
     return -100;
 }
 
+long double EOC_w_df(
+        double (*method)(double (*f) (double),
+                         double (*df) (double),
+                         double u0,
+                         double t0, double t1,
+                         int n,
+                         char *file_prefix,
+                         unsigned int print),
+        double(*f) (double),
+        double(*df) (double),
+        double correct,
+        double u0,
+        double t0, double t1,
+        int n) {
+    double calculated = method(f, df, u0, t0, t1, n, "", 0);
+    double calculated_before = method(f, df, u0, t0, t1, (int) (n / 2. + 0.5), "", 0);
+    double error = fabs(correct - calculated);
+    double error_before = fabs(correct - calculated_before);
+    double EOC = log2(error_before / error);
+    double all_in_one = log2(fabs(correct - method(f, df, u0, t0, t1, (int) (n / 2. + 0.5), "", 0)) / fabs(correct - method(f, df, u0, t0, t1, n, "", 0)));
+    return EOC;
+}
+
 double explicit_euler(double (*f)(double), double u0, double t0, double t1, int n, char *file_prefix) {
     char filename[100];
     FILE *file;
@@ -85,8 +108,6 @@ double implicit_euler(double (*f)(double), double(*d_f)(double), double u0, doub
 
 double trapezoid_euler_newton(double x0, double ui, double (*F)(double), double (*d_F)(double), double h, double eps, int i) {
 
-    //printf("x_i=%.5lf\t\tF(x_i)=%.5lf\n", x0, x0 - h*F(x0) - ui);
-
     if (i > 100) return x0;
 
     double f_i = x0 - h*F(x0)/2 - ui - h*F(ui)/2;
@@ -99,22 +120,24 @@ double trapezoid_euler_newton(double x0, double ui, double (*F)(double), double 
     return trapezoid_euler_newton(x0 - (f_i)/d_f_i, ui, F, d_F, h, eps, i+1);
 }
 
-double trapezoid_euler(double (*f)(double), double(*d_f)(double), double u0, double t0, double t1, int n, char *file_prefix) {
-    char filename[100];
+double trapezoid_euler(double (*f)(double), double(*d_f)(double), double u0, double t0, double t1, int n, char *file_prefix, unsigned int print) {
     FILE *file;
-    sprintf(filename, "../outputs/%s_%dn.csv", file_prefix, (int) n);
-    file = fopen(filename, "w");
-    if (f == NULL) {
-        printf("Error opening file: %s\n", filename);
-        return -1;
+    if (print) {
+        char filename[100];
+        sprintf(filename, "../outputs/%s_%dn.csv", file_prefix, (int) n);
+        file = fopen(filename, "w");
+        if (f == NULL) {
+            printf("Error opening file: %s\n", filename);
+            return -1;
+        }
     }
 
     double h = (t1 - t0)/n;
     double u_i = u0;
     for (int i = 0; i<n; i++) {
-        fprintf(file, "%lf, %lf\n", t0 + h*i, u_i);
-        u_i = trapezoid_euler_newton(u_i, u_i, f, d_f, h, 0.000001, 1);
+        if (print) fprintf(file, "%lf, %lf\n", t0 + h*i, u_i);
+        u_i = trapezoid_euler_newton(u_i, u_i, f, d_f, h, 0.00001, 1);
     }
-    fclose(file);
+    if (print) fclose(file);
     return u_i;
 }
