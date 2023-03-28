@@ -8,8 +8,6 @@
 #endif //W_7_HEADERS_H
 
 #include <stdio.h>
-#include "EOC.h"
-#include "functions.h"
 
 double explicit_euler(
         double (*f)(double),
