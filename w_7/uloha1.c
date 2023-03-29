@@ -1,7 +1,7 @@
 #include "header.h"
 
 int main() {
-    for (int n = 10; n < 1000; n*=2) {
+    for (int n = 10; n < 200; n*=2) {
         explicit_euler(f, 0., 0., 2., n, "uloha1_eul", 1);
         explicit_taylor_2(f, df, 0., 0., 2., n, "uloha1_tay", 1);
     }

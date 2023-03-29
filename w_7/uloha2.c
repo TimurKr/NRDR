@@ -1,7 +1,7 @@
 #include "header.h"
 
 int main() {
-    for (int n = 10; n < 1000; n*=2) {
+    for (int n = 10; n < 200; n*=2) {
         explicit_taylor_3(
             f, df, ddf,
             0., 0., 2., n,
