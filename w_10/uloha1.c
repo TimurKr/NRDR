@@ -1,18 +1,35 @@
 #include "header.h"
 
 int main() {
-    for (int n = 10; n < 200; n*=2) {
-        RK4(
+    for (int n = 10; n < 500; n*=2) {
+        nystrom(
                 f1,
                 0., 0., 2., n,
-                "uloha1_RK4", 1);
+                "uloha1_a_nystrom", 1);
     }
 
-    for (int n = 10; n< 2000; n *= 2) {
+    printf("A: ");
+    for (int n = 10; n<5000; n *= 2) {
         printf("EOC for n = %d: %lf\n", n * 2,
                (double) EOC(
-                       RK4,
-                       f1,
-                       atan(32), 0., 0., 2., n * 2));
+                       nystrom,
+                       f1,atan(32),
+                       0., 0., 2., n * 2));
+    }
+
+    for (int n = 10; n < 500; n*=2) {
+        nystrom(
+                f2,
+                1., 0., 1., n,
+                "uloha1_b_nystrom", 1);
+    }
+
+    printf("\n\nB: ");
+    for (int n = 10; n<5000; n *= 2) {
+        printf("EOC for n = %d: %lf\n", n * 2,
+               (double) EOC(
+                       nystrom,
+                       f2,atan(32),
+                       1., 0., 1., n * 2));
     }
 }
