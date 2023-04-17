@@ -9,14 +9,10 @@
 
 #include "math.h"
 
-double f(double x) {
+double f1(double x) {
     return 16 * pow(cos(x), 2);
 }
 
-double df(double x) {
-    return -16 * sin(2*x);
-}
-
-double ddf(double x) {
-    return -32 * cos(2*x);
+double f2(double x) {
+    return (x*x + 1)/(2*x);
 }
