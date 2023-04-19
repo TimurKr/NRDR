@@ -29,7 +29,7 @@ int main() {
         printf("EOC for n = %d: %lf\n", n * 2,
                (double) EOC(
                        nystrom,
-                       f2,atan(32),
+                       f2, exp(-10*1),
                        1., 0., 1., n * 2));
     }
 }

@@ -219,7 +219,7 @@ double nystrom(
     }
 
     double h = (t1 - t0)/n;
-    double u_i[2] = {u0, u0 + h*f(u0)};
+    double u_i[2] = {u0, u0 + h*f(u0 + (h/2)*f(u0))};
     for (int i = 2; i<n; i++) {
         if (print) {
             fprintf(file, "%lf, %lf\n", t0 + h*(i-2), u_i[0]);
@@ -237,7 +237,7 @@ double nystrom(
 }
 
 
-double adam_bash(
+double adam_bash_2step(
         double (*f)(double),
         double u0, double t0, double t1, int n,
         char *file_prefix, unsigned int print) {
@@ -253,7 +253,7 @@ double adam_bash(
     }
 
     double h = (t1 - t0)/n;
-    double u_i[2] = {u0, u0 + h*f(u0)};
+    double u_i[2] = {u0, u0 + h*f(u0 + (h/2)*f(u0))};
     for (int i = 2; i<n; i++) {
         if (print) {
             fprintf(file, "%lf, %lf\n", t0 + h*(i-2), u_i[0]);
