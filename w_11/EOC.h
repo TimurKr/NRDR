@@ -27,6 +27,23 @@ long double EOC(
             fabs(correct - method(f, u0, t0, t1, n, "", 0)));
 }
 
+long double EOC_w_method(
+        double (*method)(double (*f) (double),
+                         unsigned int init_method, double u0,
+                         double t0, double t1,
+                         int n,
+                         char *file_prefix,
+                         unsigned int print),
+        double(*f) (double),
+        double correct,
+        double u0, unsigned int init_method,
+        double t0, double t1,
+        int n) {
+    return log2l(
+            fabs(correct - method(f, init_method, u0, t0, t1, (int) (n / 2. + 0.5), "", 0)) /
+            fabs(correct - method(f, init_method, u0, t0, t1, n, "", 0)));
+}
+
 long double EOC_w_df(
         double (*method)(double (*f) (double),
                          double (*df) (double),

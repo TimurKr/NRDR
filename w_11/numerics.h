@@ -308,8 +308,9 @@ double adam_bash_3step_EEM(
     return u_i[1];
 }
 
-double adam_bash_3step_RK2(
-        double (*f)(double),
+
+double adam_bash_4step(
+        double (*f)(double), unsigned int init_method,
         double u0, double t0, double t1, int n,
         char *file_prefix, unsigned int print) {
     FILE *file;
@@ -324,24 +325,58 @@ double adam_bash_3step_RK2(
     }
 
     double h = (t1 - t0)/n;
-    double u_i[3];
-    u_i[0] = u0;
-    u_i[1] = u_i[0] + h*f(u_i[0] + (h/2)*f(u_i[0]));
-    u_i[2] = u_i[1] + h*f(u_i[1] + (h/2)*f(u_i[1]));
-    for (int i = 3; i<n; i++) {
-        if (print) {
-            fprintf(file, "%lf, %lf\n", t0 + h*(i-3), u_i[0]);
+
+    double u_i[4];
+
+    if (init_method == 0)
+    {
+        // EEM
+        u_i[0] = u0;
+        u_i[1] = u_i[0] + h*f(u_i[0]);
+        u_i[2] = u_i[1] + h*f(u_i[1]);
+        u_i[3] = u_i[2] + h*f(u_i[2]);
+    }
+    else if (init_method == 1)
+    {
+        // RK2
+        u_i[0] = u0;
+        u_i[1] = u_i[0] + h*f(u_i[0] + (h/2)*f(u_i[0]));
+        u_i[2] = u_i[1] + h*f(u_i[1] + (h/2)*f(u_i[1]));
+        u_i[3] = u_i[2] + h*f(u_i[2] + (h/2)*f(u_i[2]));
+    }
+    else if (init_method == 2)
+    {
+        // SSPRK3
+        u_i[0] = u0;
+        for (int i = 0; i<3; i++) {
+            double y1 = u_i[i];
+            double y2 = u_i[i] + h*f(y1);
+            double y3 = u_i[i] + (h/4)*(f(y1) + f(y2));
+            u_i[i + 1] = u_i[i] + (h/6)*(f(y1) + f(y2) + 4*f(y3));
         }
-        double tmp = u_i[2] + (h/12)*(5*f(u_i[0]) - 16*f(u_i[1]) + 23*f(u_i[2]));
+    }
+    else
+    {
+        printf("Invalid init_method: %d\n", init_method);
+        return -1;
+    }
+
+    for (int i = 4; i<n+1; i++) {
+        if (print) {
+            fprintf(file, "%lf, %lf\n", t0 + h*(i-4), u_i[0]);
+        }
+        double tmp = u_i[3] + (h/24)*(-9*f(u_i[0]) + 37*f(u_i[1]) - 59*f(u_i[2]) + 55*f(u_i[3]));
         u_i[0] = u_i[1];
         u_i[1] = u_i[2];
-        u_i[2] = tmp;
+        u_i[2] = u_i[3];
+        u_i[3] = tmp;
     }
     if (print) {
-        fprintf(file, "%lf, %lf\n", t1-2*h, u_i[0]);
-        fprintf(file, "%lf, %lf\n", t1-h, u_i[1]);
-        fprintf(file, "%lf, %lf\n", t1, u_i[2]);
+        fprintf(file, "%lf, %lf\n", t1-3*h, u_i[0]);
+        fprintf(file, "%lf, %lf\n", t1-2*h, u_i[1]);
+        fprintf(file, "%lf, %lf\n", t1-h, u_i[2]);
+        fprintf(file, "%lf, %lf\n", t1, u_i[3]);
         fclose(file);
     }
-    return u_i[1];
+    return u_i[3];
 }

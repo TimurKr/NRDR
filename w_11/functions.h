@@ -14,5 +14,5 @@ double f1(double x) {
 }
 
 double f2(double x) {
-    return -10*x;
+    return (x*x+1)/(2*x);
 }
