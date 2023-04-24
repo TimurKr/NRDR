@@ -9,7 +9,7 @@ int main() {
     }
 
     printf("A: ");
-    for (int n = 10; n<5000; n *= 2) {
+    for (int n = 10; n<100000; n *= 2) {
         printf("EOC for n = %d: %lf\n", n * 2,
                (double) EOC(
                        nystrom,
@@ -25,7 +25,7 @@ int main() {
     }
 
     printf("\n\nB: ");
-    for (int n = 10; n<5000; n *= 2) {
+    for (int n = 10; n<100000; n *= 2) {
         printf("EOC for n = %d: %lf\n", n * 2,
                (double) EOC(
                        nystrom,

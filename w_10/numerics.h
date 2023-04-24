@@ -220,7 +220,7 @@ double nystrom(
 
     double h = (t1 - t0)/n;
     double u_i[2] = {u0, u0 + h*f(u0 + (h/2)*f(u0))};
-    for (int i = 2; i<n; i++) {
+    for (int i = 1; i<n; i++) {
         if (print) {
             fprintf(file, "%lf, %lf\n", t0 + h*(i-2), u_i[0]);
         }
@@ -254,7 +254,7 @@ double adam_bash_2step(
 
     double h = (t1 - t0)/n;
     double u_i[2] = {u0, u0 + h*f(u0 + (h/2)*f(u0))};
-    for (int i = 2; i<n; i++) {
+    for (int i = 1; i<n; i++) {
         if (print) {
             fprintf(file, "%lf, %lf\n", t0 + h*(i-2), u_i[0]);
         }
@@ -290,7 +290,7 @@ double adam_bash_3step_EEM(
     u_i[0] = u0;
     u_i[1] = u_i[0] + h*f(u_i[0]);
     u_i[2] = u_i[1] + h*f(u_i[1]);
-    for (int i = 3; i<n; i++) {
+    for (int i = 2; i<n; i++) {
         if (print) {
             fprintf(file, "%lf, %lf\n", t0 + h*(i-3), u_i[0]);
         }
@@ -305,7 +305,7 @@ double adam_bash_3step_EEM(
         fprintf(file, "%lf, %lf\n", t1, u_i[2]);
         fclose(file);
     }
-    return u_i[1];
+    return u_i[2];
 }
 
 double adam_bash_3step_RK2(
@@ -328,7 +328,7 @@ double adam_bash_3step_RK2(
     u_i[0] = u0;
     u_i[1] = u_i[0] + h*f(u_i[0] + (h/2)*f(u_i[0]));
     u_i[2] = u_i[1] + h*f(u_i[1] + (h/2)*f(u_i[1]));
-    for (int i = 3; i<n; i++) {
+    for (int i = 2; i<n; i++) {
         if (print) {
             fprintf(file, "%lf, %lf\n", t0 + h*(i-3), u_i[0]);
         }
@@ -343,5 +343,5 @@ double adam_bash_3step_RK2(
         fprintf(file, "%lf, %lf\n", t1, u_i[2]);
         fclose(file);
     }
-    return u_i[1];
+    return u_i[2];
 }
