@@ -16,3 +16,7 @@ double f1(double x) {
 double f2(double x) {
     return (x*x+1)/(2*x);
 }
+
+double f3(double x) {
+    return -sin(x);
+}

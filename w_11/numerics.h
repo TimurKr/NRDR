@@ -8,6 +8,7 @@
 #endif //W_7_HEADERS_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
 double explicit_euler(
         double (*f)(double),
@@ -379,4 +380,71 @@ double adam_bash_4step(
         fclose(file);
     }
     return u_i[3];
+}
+
+typedef struct {
+    double *under;
+    double *diag;
+    double *above;
+    double *equals;
+    double *result;
+    unsigned int n;
+} tridiag_system;
+
+void thomas_algorithm(tridiag_system* system) {
+    for (unsigned int i = 1; i < system->n; i++) {
+        double w = system->under[i]/system->diag[i-1];
+        system->diag[i] -= w*system->above[i-1];
+        system->equals[i] -= w*system->equals[i-1];
+    }
+
+    system->result[system->n-1] = system->equals[system->n-1]/system->diag[system->n-1];
+    for (int i = system->n - 2; i >= 0; i--) {
+        system->result[i] = (system->equals[i] - system->above[i]*system->result[i+1])/system->diag[i];
+    }
+}
+
+void finite_difference(
+        double (*f)(double),
+        double t0, double t1, double u0, double u1, int n,
+        char *file_prefix, unsigned int print
+        ) {
+    double h = (t1 - t0)/(n+1);
+    tridiag_system system;
+    system.n = n;
+    system.under = malloc(n*sizeof(double));
+    system.diag = malloc(n*sizeof(double));
+    system.above = malloc(n*sizeof(double));
+    system.equals = malloc(n*sizeof(double));
+    system.result = malloc(n*sizeof(double));
+    double diag = -2/h/h;
+    double around = 1/h/h;
+    for (int i = 0; i<n; i++) {
+        system.under[i] = around;
+        system.diag[i] = diag;
+        system.above[i] = around;
+        system.equals[i] = f(t0 + (i+1)*h);
+    }
+    system.equals[0] = f(t0) - u0*around;
+    system.equals[n-1] = f(t1) - u1*around;
+
+    thomas_algorithm(&system);
+
+    if (print) {
+        char filename[100];
+        sprintf(filename, "../outputs/%s_%dn.csv", file_prefix, (int) n);
+        FILE *file = fopen(filename, "w");
+        if (f == NULL) {
+            printf("Error opening file: %s\n", filename);
+            return;
+        }
+        fprintf(file, "%lf, %lf\n", t0, u0);
+        for (int i = 0; i<n; i++) {
+            fprintf(file, "%lf, %lf\n", t0 + (i+1)*h, system.result[i]);
+        }
+        fprintf(file, "%lf, %lf\n", t1, u1);
+        fclose(file);
+    }
+
+
 }
