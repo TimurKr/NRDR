@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(w_11 C)
+project(w_12 C)
 
 set(CMAKE_C_STANDARD 11)
 
