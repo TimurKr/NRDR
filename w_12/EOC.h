@@ -137,7 +137,7 @@ double EOC_f_d_neumann(
 
     double E_size = 0;
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i <= n; ++i) {
         E_size += h * pow(fabs(f_result(t0 + (i+1) * h) - results[i]), p);
     }
     E_size = pow(E_size, 1. / p);
@@ -148,7 +148,7 @@ double EOC_f_d_neumann(
     results = method(f, t0, t1, d0, u1, n, "", 0);
     double E_size_2 = 0;
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i <= n; ++i) {
         E_size_2 += h * pow(fabs(f_result(t0 + (i+1) * h) - results[i]), p);
     }
     E_size_2 = pow(E_size_2, 1. / p);
