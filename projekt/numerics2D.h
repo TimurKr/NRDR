@@ -10,38 +10,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-double explicit_euler(
+double* explicit_euler(
         double (*x)(double, double),
         double (*y)(double, double),
-        double u0,
+        double x0, double y0,
         double t0, double t1,
         int n,
-        char *file_prefix, unsigned int print) {
+        char *file_prefix, unsigned int print
+        ) {
     FILE *file;
     if (print) {
         char filename[100];
         sprintf(filename, "../outputs/%s_%dn.csv", file_prefix, (int) n);
         file = fopen(filename, "w");
-        if (f == NULL) {
+        if (file == NULL) {
             printf("Error opening file: %s\n", filename);
-            return -1;
+            return 0;
         }
     }
 
     double h = (t1 - t0)/n;
-    double u_i = u0;
+    double x_i = x0;
+    double y_i = y0;
     for (int i = 0; i<n; i++) {
         if (print) {
-            fprintf(file, "%lf, %lf\n", t0 + h * i, u_i);
+            fprintf(file, "%lf, %lf\n", x_i, y_i);
         }
-        u_i = u_i + h*f(u_i);
+        double temp_x_i = x_i;
+        x_i = x_i + h*x(temp_x_i, y_i);
+        y_i = y_i + h*y(temp_x_i, y_i);
     }
 
     if (print) {
-        fprintf(file, "%lf, %lf\n", t1, u_i);
+        fprintf(file, "%lf, %lf\n", x_i, y_i);
         fclose(file);
     }
-    return u_i;
+    double *result = malloc(2*sizeof(double));
+    result[0] = x_i;
+    result[1] = y_i;
+    return result;
 }
 
 double explicit_taylor_2(

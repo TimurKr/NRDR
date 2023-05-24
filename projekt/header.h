@@ -7,6 +7,6 @@
 
 #endif //W_7_HEADER_H
 
-#include "numerics.h"
+#include "numerics2D.h"
 #include "functions.h"
-#include "EOC.h"
+#include "EOC2D.h"
