@@ -9,10 +9,10 @@
 
 #include "math.h"
 
-double x(double x, double y) {
+double fx(double x, double y) {
     return - 1./2 * y;
 }
 
-double y(double x, double y) {
+double fy(double x, double y) {
     return - x - y;
 }
